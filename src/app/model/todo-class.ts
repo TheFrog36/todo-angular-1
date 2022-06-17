@@ -2,8 +2,10 @@ export class TodoClass {
 
   name: string;
   tags: string[];
-  private readonly _creationDate: number;
   priority: TodoPriority;
+  private readonly _creationDate: number;
+  private _doneDate?: number;
+
 
   constructor(name: string, tags: string[] = [], creationDate: Date = new Date(), priority: TodoPriority = TodoPriority.LOW){
     this.name = name;
@@ -22,6 +24,28 @@ export class TodoClass {
 
   get description(): string{
     return getPriorityString(this.priority);
+  }
+
+  static compareTodoByName(a:TodoClass, b:TodoClass){
+    return a.name.localeCompare(b.name)
+  }
+
+  static compareTodoByDate(a:TodoClass, b:TodoClass){
+    return  a._creationDate - b._creationDate
+  }
+
+  static compareTodoByPriority(a:TodoClass, b:TodoClass){
+   return b.priority - a.priority
+  }
+
+  done(): void {
+    const now = new Date()
+    this._doneDate = now.getTime()
+    this.priority  = TodoPriority.DONE
+  }
+
+  get doneDate(): Date | null{
+    return this._doneDate? new Date(this._doneDate) : null
   }
 
 }
