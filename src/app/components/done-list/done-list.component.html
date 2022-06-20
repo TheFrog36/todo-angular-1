@@ -1,7 +1,7 @@
+<h1>Done list</h1>
 <div class="container">
   <button (click)="orderByDate()">Order by date</button>
   <button (click)="orderByName()">Order by name</button>
-  <button (click)="orderByPriority()">Order by priority</button>
   <button (click)="refreshArray()">Refresh</button>
   <app-todo-list-element
     *ngFor="let todo of todosArray"

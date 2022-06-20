@@ -11,10 +11,9 @@ import { TODOS, TODOS_I } from './model/todos-mock';
 export class AppComponent implements OnInit {
 
   title = 'todo-angular';
-  todosArray: TodoClass[];
+  // todosArray: TodoClass[];
 
   constructor(){
-    this.todosArray = TODOS;
 
     // const pippo = {name: 'ciao', surname: 'ciao', min: 4}
 

@@ -48,6 +48,12 @@ export class TodoClass {
     return this._doneDate? new Date(this._doneDate) : null
   }
 
+  static fromTodoObj (dbObject: any){
+    const Todo = new TodoClass(dbObject.name, dbObject.tags, new Date(dbObject.creationDate * 1000), dbObject.priority)
+    if(dbObject.doneDate) Todo._doneDate = dbObject.doneDate
+    return Todo
+  }
+
 }
 
 export enum TodoPriority {
